@@ -1,0 +1,681 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>American Mahjong Rules</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="247a51d0-3555-80d3-94b9-d7ad26b0048e" class="page sans"><header><h1 class="page-title">American Mahjong Rules</h1><p class="page-description"></p></header><div class="page-body"><p id="247a51d0-3555-80da-b4ac-f43cb6f3bbab" class="">American mahjong is a game of skill and luck that differs from Asian versions through its unique use of racks, jokers, annual score cards, and distinct gameplay mechanics. The goal is to be the first player to complete a hand that exactly matches one from the official score card.</p><h2 id="247a51d0-3555-8029-921e-c194d4e5c4f9" class="">Equipment</h2><ul id="247a51d0-3555-807f-a45e-e406c667cd92" class="bulleted-list"><li style="list-style-type:disc"><strong>152 tiles</strong> from a 166-tile set, with 14 spares</li></ul><ul id="247a51d0-3555-808e-9542-c805a4739d97" class="bulleted-list"><li style="list-style-type:disc"><strong>2 dice</strong> for determining dealer and breaking the wall (not used for online play)</li></ul><ul id="247a51d0-3555-8006-82ec-ce47fbf7192e" class="bulleted-list"><li style="list-style-type:disc"><strong>4 score cards</strong> published annually by the National Mah Jongg League</li></ul><ul id="247a51d0-3555-80e0-8e62-f07183b53ccb" class="bulleted-list"><li style="list-style-type:disc"><strong>4 racks</strong> for holding tiles</li></ul><h2 id="247a51d0-3555-8036-a0f1-e76aef89a702" class="">The Tiles</h2><h3 id="247a51d0-3555-80f2-b570-cc9c85231bb5" class="">Suits (108 tiles)</h3><p id="247a51d0-3555-8046-a51d-e37fcc1690d9" class=""><strong>Dots</strong>: Numbers 1-9, four of each (36 tiles)</p><figure id="247a51d0-3555-80a0-93fc-f1ea25af69e1" class="image" style="text-align:left"><a href="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image.png"><img style="width:528px" src="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image.png"/></a></figure><p id="247a51d0-3555-8065-b837-edbc3956ccf9" class=""><strong>Characters/Craks</strong>: Numbers 1-9, four of each (36 tiles)</p><figure id="247a51d0-3555-8064-88ad-fa39a2967866" class="image" style="text-align:left"><a href="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image%201.png"><img style="width:528px" src="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image%201.png"/></a></figure><p id="247a51d0-3555-809d-a99d-fbdc3c4280df" class=""><strong>Bamboos/Bams</strong>: Numbers 1-9, four of each (36 tiles)</p><figure id="247a51d0-3555-80ed-aa77-f82cfe285d25" class="image" style="text-align:left"><a href="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image%202.png"><img style="width:528px" src="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image%202.png"/></a></figure><p id="247a51d0-3555-8094-be62-d8a9244aabb6" class="">The 1 bamboo tile features a bird perched on bamboo rather than a single bamboo stalk. The design varies between different mahjong sets - here it resembles an owl.</p><h3 id="247a51d0-3555-80d2-8d25-ea2fd89466ff" class="">Honors (28 tiles)</h3><p id="247a51d0-3555-8077-8a96-c9a003989c6d" class=""><strong>Winds</strong>: East, South, West, North - four of each (16 tiles)</p><figure id="247a51d0-3555-80f2-beb8-c2080c70cf18" class="image" style="text-align:left"><a href="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image%203.png"><img style="width:240px" src="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image%203.png"/></a></figure><p id="247a51d0-3555-80b3-964b-dee87c5f517b" class=""><strong>Dragons</strong>: Red, Green, White (&quot;Soap&quot;) - four of each (12 tiles)</p><figure id="247a51d0-3555-8036-a29f-ca4671cff62f" class="image" style="text-align:left"><a href="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image%204.png"><img style="width:192px" src="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image%204.png"/></a></figure><p id="247a51d0-3555-80ab-96cd-ee106e1ea20f" class="">Red Dragon is a Crak tile, Green Dragon is a Bam tile, and White Dragon is a Dot tile, with the white dragon &quot;soap&quot; also serving as zero in year hands.</p><h3 id="247a51d0-3555-8033-ae87-c2fb0b442cc0" class="">Flowers and Seasons (8 tiles)</h3><p id="247a51d0-3555-80af-b9f9-ce4bc8ef40ae" class="">One of each: 4 flowers, 4 seasons. </p><figure id="247a51d0-3555-8096-b79d-c3287cf4e3b4" class="image" style="text-align:left"><a href="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image%205.png"><img style="width:480px" src="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image%205.png"/></a></figure><p id="247a51d0-3555-804c-beea-fe2c8912aa3d" class="">Flowers are used interchangeably with each other in any hand requiring flower tiles. The numbers on flower tiles don&#x27;t mean anything for gameplay purposes. Be sure you can tell the difference between the 1 bamboo tile (which features a bird) and flower tiles to avoid confusion.</p><h3 id="247a51d0-3555-80fb-9c06-d2a8b2eacc4c" class="">Jokers (8 tiles)</h3><ul id="247a51d0-3555-8002-b1a7-d9ee668bff4e" class="bulleted-list"><li style="list-style-type:disc">Wild tiles that can substitute for any tile except in pairs or single tiles</li></ul><figure id="247a51d0-3555-8090-b959-e6667079e423" class="image" style="text-align:left"><a href="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image%206.png"><img style="width:60px" src="American%20Mahjong%20Rules%20247a51d0355580d394b9d7ad26b0048e/image%206.png"/></a></figure><h2 id="247a51d0-3555-80c1-853f-c9d5c300ad34" class="">Setup and Dealing</h2><ol type="1" id="247a51d0-3555-8087-be99-fcbaf114930d" class="numbered-list" start="1"><li>All 152 tiles are shuffled face down</li></ol><ol type="1" id="247a51d0-3555-809c-92b9-f35d463d7f97" class="numbered-list" start="2"><li>Each player builds a wall of 38 tiles (two rows of 19 tiles each)</li></ol><ol type="1" id="247a51d0-3555-8045-9a65-f83cf7813275" class="numbered-list" start="3"><li>Highest dice roll becomes East (dealer)</li></ol><ol type="1" id="247a51d0-3555-809f-9430-d74221edadc1" class="numbered-list" start="4"><li>East breaks the wall based on dice roll and dealing begins</li></ol><ol type="1" id="247a51d0-3555-80fa-80db-c814da540d9d" class="numbered-list" start="5"><li>Each player receives 13 tiles, East gets 14 to start</li></ol><p id="247a51d0-3555-80c2-ad53-e18678235751" class="">The actual dealing process is a bit more complicated, but since it&#x27;s handled automatically by mobile and online apps, it&#x27;s not covered in detail here.</p><h2 id="247a51d0-3555-80a4-9719-e83cdda55c23" class="">Score Card and Hand Selection</h2><p id="247a51d0-3555-807d-81bd-fd11a27ad062" class="">The score card contains hands organized by categories:</p><ul id="247a51d0-3555-80b6-9bc9-cd13e33c48cd" class="bulleted-list"><li style="list-style-type:disc"><strong>YEAR</strong>: Patterns using year numbers (like 2025)</li></ul><ul id="247a51d0-3555-8076-bae0-f19a0be2249a" class="bulleted-list"><li style="list-style-type:disc"><strong>2468</strong>: Even-numbered tiles only</li></ul><ul id="247a51d0-3555-800f-bf81-c7c8c98004ae" class="bulleted-list"><li style="list-style-type:disc"><strong>Consecutive Runs</strong>: Sequential numbers</li></ul><ul id="247a51d0-3555-800a-ae43-ddeed638e124" class="bulleted-list"><li style="list-style-type:disc"><strong>13579</strong>: Odd-numbered tiles only</li></ul><ul id="247a51d0-3555-80d9-b69a-f0292976ebf0" class="bulleted-list"><li style="list-style-type:disc"><strong>Quints</strong>: Hands with five identical tiles</li></ul><ul id="247a51d0-3555-80cb-bcc5-f9dbd3c28bec" class="bulleted-list"><li style="list-style-type:disc"><strong>Winds-Dragons</strong>: Wind and dragon combinations</li></ul><ul id="247a51d0-3555-8066-a451-fc28b50d3b16" class="bulleted-list"><li style="list-style-type:disc"><strong>369</strong>: Using 3s, 6s, and 9s</li></ul><ul id="247a51d0-3555-8002-983d-c89d829c1037" class="bulleted-list"><li style="list-style-type:disc"><strong>Singles and Pairs</strong>: Mixed single tiles and pairs</li></ul><h3 id="247a51d0-3555-80d6-9a12-dc50ad3e3d86" class="">Reading the Score Card</h3><ul id="247a51d0-3555-8037-827f-c80403633a48" class="bulleted-list"><li style="list-style-type:disc"><strong>Numbers 1-9</strong>: Correspond to tile numbers</li></ul><ul id="247a51d0-3555-80f1-8ae1-d678a773aee1" class="bulleted-list"><li style="list-style-type:disc"><strong>N, S, E, W</strong>: Wind tiles (North, South, East, West)</li></ul><ul id="247a51d0-3555-8089-b74d-efc71b151ef2" class="bulleted-list"><li style="list-style-type:disc"><strong>D</strong>: Any dragon</li></ul><ul id="247a51d0-3555-804c-8a9c-d0c4376b2b46" class="bulleted-list"><li style="list-style-type:disc"><strong>R, G, 0</strong>: Red dragon, Green dragon, White dragon (Soap)</li></ul><ul id="247a51d0-3555-8046-8ca1-e2e96b6a1917" class="bulleted-list"><li style="list-style-type:disc"><strong>F</strong>: Any flower tile</li></ul><ul id="247a51d0-3555-8006-a1d1-e91c2df44d30" class="bulleted-list"><li style="list-style-type:disc"><strong>Colors</strong>: Red, blue, green indicate different suits must be used</li></ul><ul id="247a51d0-3555-806b-802f-e91ce5223e63" class="bulleted-list"><li style="list-style-type:disc"><strong>X</strong>: Exposed hand (can call discards)</li></ul><ul id="247a51d0-3555-80fc-b290-c290306be38c" class="bulleted-list"><li style="list-style-type:disc"><strong>C</strong>: Concealed hand (must draw all tiles from wall, except for the last)</li></ul><h3 id="247a51d0-3555-8040-9214-ccb1a58287d6" class="">Score Card Notations</h3><p id="247a51d0-3555-8086-834a-d0a8e240dc8b" class="">The score card uses various text notations to indicate specific requirements. The card notations are usually redundant with the pattern shown, but read them carefully to look for exceptions to the expected rule.</p><p id="247a51d0-3555-80be-aefb-edd1d802416f" class=""><strong>Suit Requirements:</strong></p><ul id="247a51d0-3555-803c-aa88-e173ed48a1e7" class="bulleted-list"><li style="list-style-type:disc"><strong>Any 1 suit</strong> - Use tiles from only one suit (all dots, all bams, or all craks)</li></ul><ul id="247a51d0-3555-80d5-9234-deb02254b782" class="bulleted-list"><li style="list-style-type:disc"><strong>Any 2 suits</strong> - Use tiles from exactly two different suits (the pattern matches the color pattern on the card)</li></ul><ul id="247a51d0-3555-80cf-a621-fa997625ddbb" class="bulleted-list"><li style="list-style-type:disc"><strong>Any 3 suits</strong> - Use tiles from all three suits (dots, bams, craks)</li></ul><p id="247a51d0-3555-8072-915a-fea2b600fe30" class=""><strong>Dragon Specifications:</strong></p><ul id="247a51d0-3555-80d3-860d-c27982cf2fba" class="bulleted-list"><li style="list-style-type:disc"><strong>Matching Dragons</strong> - Dragons match the suit used: Red Dragon with craks, Green Dragon with bams, and White Dragon (soap) with dots</li></ul><ul id="247a51d0-3555-80d1-ab4b-ce0b3ce04625" class="bulleted-list"><li style="list-style-type:disc"><strong>Opposite Dragons</strong> - Use dragons that are opposite of the numbered suit tiles used</li></ul><ul id="247a51d0-3555-80b8-be95-c245b4753206" class="bulleted-list"><li style="list-style-type:disc"><strong>Any Dragon</strong> - Any dragon suit allowed</li></ul><p id="247a51d0-3555-80ef-b498-c684fc817d86" class=""><strong>Wind Requirements:</strong></p><ul id="247a51d0-3555-801e-af56-d8ff1e80fcc0" class="bulleted-list"><li style="list-style-type:disc"><strong>Any Wind</strong> - Use any wind tile(s) as specified in the notation, not necessarily what&#x27;s shown in the pattern. The Winds and Dragons category usually specifies exactly what tiles to use. However, the Quints section often contains hands that specify &quot;Any Wind&quot; in the notation even though a specific wind (like N) is shown in the pattern on the card.</li></ul><p id="247a51d0-3555-8062-b9d3-ca843053be6a" class=""><strong>Number Patterns:</strong></p><ul id="247a51d0-3555-80a0-a5e3-f3c11a72b82e" class="bulleted-list"><li style="list-style-type:disc"><strong>Any Run/Consecutive</strong> - Use consecutive numbers in any suit (like 4-5-6 or 7-8-9)</li></ul><ul id="247a51d0-3555-8030-8b3e-cae0bcb90afe" class="bulleted-list"><li style="list-style-type:disc"><strong>Like Numbers</strong> - Use the same number across different suits</li></ul><ul id="247a51d0-3555-80c6-951c-f0d131537777" class="bulleted-list"><li style="list-style-type:disc"><strong>These Numbers Only</strong> - Use only the specific numbers shown in the hand pattern</li></ul><h3 id="247a51d0-3555-809e-9939-eb51868d0f2c" class="">Tile Combinations</h3><ul id="247a51d0-3555-8093-8d64-fa09fb8a0fdb" class="bulleted-list"><li style="list-style-type:disc"><strong>Singles</strong>: Non matching tiles like NEWS and 2025</li></ul><ul id="247a51d0-3555-8095-909a-f25cf0491663" class="bulleted-list"><li style="list-style-type:disc"><strong>Pair: </strong>Two identical tiles</li></ul><ul id="247a51d0-3555-8091-94c2-da9f8f87654a" class="bulleted-list"><li style="list-style-type:disc"><strong>Pung</strong>: Three identical tiles</li></ul><ul id="247a51d0-3555-8073-9ccc-c8415c3f8064" class="bulleted-list"><li style="list-style-type:disc"><strong>Kong</strong>: Four identical tiles</li></ul><ul id="247a51d0-3555-8077-9ddd-f3eef87bfd9f" class="bulleted-list"><li style="list-style-type:disc"><strong>Quint</strong>: Five identical tiles (requires jokers)</li></ul><ul id="247a51d0-3555-8029-86b8-fb2714bdf361" class="bulleted-list"><li style="list-style-type:disc"><strong>Sextet</strong>: Six identical tiles (requires jokers)</li></ul><p id="247a51d0-3555-80c7-b90f-c43d37a06846" class="">Singles and pairs tile combinations appear in all categories throughout the score card.</p><h2 id="247a51d0-3555-8002-9771-ed491d638a74" class="">The Charleston</h2><p id="247a51d0-3555-80fa-b316-f0bf46af87c2" class="">A unique tile exchange ritual before gameplay begins:</p><h3 id="247a51d0-3555-80fc-b6e2-c70dd7f585da" class="">First Charleston</h3><ol type="1" id="247a51d0-3555-804b-8a3f-e2c8702e153c" class="numbered-list" start="1"><li>Pass 3 unwanted tiles to the player on your right</li></ol><ol type="1" id="247a51d0-3555-8079-9ced-d040590d3231" class="numbered-list" start="2"><li>Pass 3 unwanted tiles to the player across from you</li></ol><ol type="1" id="247a51d0-3555-809d-9d38-eeb3309cdb4e" class="numbered-list" start="3"><li>Pass 3 unwanted tiles to the player on your left (&quot;first left&quot;)<ul id="247a51d0-3555-807a-9cdf-df0d5b9d1ba6" class="bulleted-list"><li style="list-style-type:disc">May &quot;blind pass&quot; received tiles without looking</li></ul></li></ol><h3 id="247a51d0-3555-80fe-8230-c4505df507ab" class="">Optional Second Charleston (if all agree)</h3><ol type="1" id="247a51d0-3555-80e4-8feb-c8d355964808" class="numbered-list" start="1"><li>Pass 3 tiles to your left</li></ol><ol type="1" id="247a51d0-3555-802f-9a1a-ecad89a6ecad" class="numbered-list" start="2"><li>Pass 3 tiles across</li></ol><ol type="1" id="247a51d0-3555-80cc-8e90-cbd78e04697c" class="numbered-list" start="3"><li>Pass 3 tiles to your right (&quot;last right&quot;)<ul id="247a51d0-3555-80f2-9f57-d38e3cc70cee" class="bulleted-list"><li style="list-style-type:disc">May blind pass again</li></ul></li></ol><h3 id="247a51d0-3555-80ed-accf-eeddf872b41e" class="">Courtesy Pass (optional)</h3><ul id="247a51d0-3555-8014-8746-daabffa9aae7" class="bulleted-list"><li style="list-style-type:disc">After second Charleston, exchange up to 3 tiles with player across from you</li></ul><p id="247a51d0-3555-80a8-9310-ea9992db6921" class=""><strong>Important</strong>: No jokers may be passed during Charleston or courtesy pass.</p><h2 id="247a51d0-3555-80b3-b084-ef935816216c" class="">Gameplay</h2><h3 id="247a51d0-3555-80c2-88c3-da53bb151c6c" class="">Turn Sequence</h3><ol type="1" id="247a51d0-3555-80a2-8c39-d036ecd405ea" class="numbered-list" start="1"><li><strong>East starts</strong> by discarding one tile (has 14 tiles)</li></ol><ol type="1" id="247a51d0-3555-802e-8751-d8a3e2d0f99d" class="numbered-list" start="2"><li><strong>Next player draws</strong> a tile from the wall</li></ol><ol type="1" id="247a51d0-3555-80cf-926b-d12155164393" class="numbered-list" start="3"><li><strong>Player decides</strong> to keep the drawn tile or discard it</li></ol><ol type="1" id="247a51d0-3555-8047-9627-f2966e5e7f7c" class="numbered-list" start="4"><li><strong>Announce and discard</strong> a tile face up to center</li></ol><ol type="1" id="247a51d0-3555-805c-9124-f0cef9789412" class="numbered-list" start="5"><li><strong>Continue clockwise</strong> unless interrupted by a call</li></ol><h3 id="247a51d0-3555-804b-9152-d9fe48f85770" class="">Calling Tiles</h3><p id="247a51d0-3555-807d-8258-e7c4756103ef" class="">Players may call the most recent discard if it completes:</p><ul id="247a51d0-3555-80ee-941b-e1f7d37f1cfc" class="bulleted-list"><li style="list-style-type:disc">A pung, kong, quint, or sextet for an exposed hand</li></ul><ul id="247a51d0-3555-80e6-b16c-d63b010855ec" class="bulleted-list"><li style="list-style-type:disc">A mahjong (winning hand)</li></ul><p id="247a51d0-3555-80ee-b9b7-c0460c67bed3" class=""><strong>Calling Rules</strong>:</p><ul id="247a51d0-3555-801d-8a78-ec66e46a813b" class="bulleted-list"><li style="list-style-type:disc">Only the most recent discard can be called</li></ul><ul id="247a51d0-3555-8091-bc86-f527f0f25066" class="bulleted-list"><li style="list-style-type:disc">Cannot call for single tiles or pairs (unless for mahjong)</li></ul><ul id="247a51d0-3555-8063-99a9-da8e695d9a4f" class="bulleted-list"><li style="list-style-type:disc">Called combinations must be exposed on your rack</li></ul><ul id="247a51d0-3555-805e-a078-ee0b57b0f0e6" class="bulleted-list"><li style="list-style-type:disc">Multiple callers: mahjong takes priority, then nearest in turn order</li></ul><h3 id="247a51d0-3555-807e-b22b-f5e825263fdb" class="">Joker Exchange</h3><p id="247a51d0-3555-801f-86a4-d68cc9dc90a0" class="">If another player has an exposed joker and you have the actual tile it represents:</p><ol type="1" id="247a51d0-3555-80ef-a2c8-ec6682c49758" class="numbered-list" start="1"><li>On your turn, exchange the real tile for the joker</li></ol><ol type="1" id="247a51d0-3555-805b-89af-e1433084a734" class="numbered-list" start="2"><li>You may use the joker in your hand without exposing it</li></ol><ol type="1" id="247a51d0-3555-80e8-8c4b-f139c381c5e3" class="numbered-list" start="3"><li>Maintain proper tile count by discarding</li></ol><p id="247a51d0-3555-8045-909f-d0ac7d90cd13" class="">Play continues with the player after the caller, so some players might be skipped.</p><h2 id="247a51d0-3555-803d-9d73-f71a061021e2" class="">Winning the Game</h2><h3 id="247a51d0-3555-806a-bffe-d6b109c18003" class="">Mahjong Declaration</h3><p id="247a51d0-3555-8033-9c58-cea085c38b10" class="">Win by completing a hand exactly matching the score card pattern. Declare &quot;Mahjong!&quot; when you have 14 tiles forming a valid hand.</p><h3 id="247a51d0-3555-8070-8c97-e06ac2f040f1" class="">Game Ends When</h3><ul id="247a51d0-3555-80bc-8666-ea0a29322690" class="bulleted-list"><li style="list-style-type:disc">Someone declares mahjong (winner takes all)</li></ul><ul id="247a51d0-3555-807e-b96a-efb67ea8155e" class="bulleted-list"><li style="list-style-type:disc">All tiles are drawn from the wall (draw game, no payout)</li></ul><h2 id="247a51d0-3555-8093-bd79-eb652a479f00" class="">Strategy Tips</h2><ul id="247a51d0-3555-80a3-b9b3-cfe00e7a9541" class="bulleted-list"><li style="list-style-type:disc">Study the score card to identify multiple possible hands</li></ul><ul id="247a51d0-3555-80c3-8241-ea506bbb58de" class="bulleted-list"><li style="list-style-type:disc">Pay attention to other players&#x27; discards and exposed tiles</li></ul><ul id="247a51d0-3555-8049-bd45-cf9574f9168c" class="bulleted-list"><li style="list-style-type:disc">Use the Charleston to improve your starting hand</li></ul><ul id="247a51d0-3555-80cd-b6cd-f709610d5a55" class="bulleted-list"><li style="list-style-type:disc">Consider switching hands based on tiles received</li></ul><ul id="247a51d0-3555-80aa-b733-edd8d5ce3b92" class="bulleted-list"><li style="list-style-type:disc">Remember that concealed hands require all tiles from the wall (except winning tile)</li></ul><ul id="247a51d0-3555-803a-9296-c0ad1ef0969a" class="bulleted-list"><li style="list-style-type:disc">Play lots of practice games online or with apps to make live games more enjoyable and build your skills</li></ul><p id="247a51d0-3555-808e-8046-fdc3c35b6fcf" class="">The game combines elements of strategy, memory, and calculated risk-taking, making each round a unique challenge! The new card released annually by the NMJL keeps the game fresh and challenging.</p><p id="247a51d0-3555-8070-bbba-e2dcce898bcd" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
